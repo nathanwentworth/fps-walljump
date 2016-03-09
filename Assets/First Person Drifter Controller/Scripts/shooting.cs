@@ -10,14 +10,16 @@ public class shooting : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject testPlayer;
 
+	public FirstPersonDrifter FirstPersonDrifter;
+
 	void Update () {
 		cooldown -= Time.deltaTime;
 
 		if (cooldown <= 0) {
-			if (Input.GetButton("Fire1")) {
+			if (Input.GetButton("Fire" + FirstPersonDrifter.playerNum)) {
 				timer += Time.deltaTime;
 			}
-			if (Input.GetButtonUp("Fire1") || timer >= 4) {
+			if (Input.GetButtonUp("Fire" + FirstPersonDrifter.playerNum) || timer >= 4) {
 				RayTime(timer);
 				timer = 0;
 			}			

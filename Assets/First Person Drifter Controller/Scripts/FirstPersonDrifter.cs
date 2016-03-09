@@ -55,6 +55,8 @@ public class FirstPersonDrifter: MonoBehaviour
     private bool dodge;
     private float dodgeTime = 0;
     private float dodgeCooldown = 0;
+
+    public int playerNum;
  
     void Start()
     {
@@ -67,15 +69,15 @@ public class FirstPersonDrifter: MonoBehaviour
     }
  
     void FixedUpdate() {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxis("Horizontal" + playerNum);
+        float inputY = Input.GetAxis("Vertical" + playerNum);
         // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed
         float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed)? .7071f : 1.0f;
 
         dodgeTime -= Time.fixedDeltaTime;
         dodgeCooldown -= Time.fixedDeltaTime;
 
-        if (Input.GetButtonDown("Fire2")) {
+        if (Input.GetButtonDown("Dodge" + playerNum)) {
         	dodge = true;
         	dodgeTime = 1;
         }
@@ -131,7 +133,7 @@ public class FirstPersonDrifter: MonoBehaviour
             }
  
             // Jump! But only if the jump button has been released and player has been grounded for a given number of frames
-            if (!Input.GetButton("Jump"))
+            if (!Input.GetButton("Jump" + playerNum))
                 jumpTimer++;
             else if (jumpTimer >= antiBunnyHopFactor) {
                 moveDirection.y = jumpSpeed;
@@ -155,7 +157,7 @@ public class FirstPersonDrifter: MonoBehaviour
             	moveDirection = new Vector3(inputX * inputModifyFactor, 0, inputY * inputModifyFactor);
               moveDirection = myTransform.TransformDirection(Vector3.forward) * speed;
               playerControl = true;
-              if (Input.GetButton("Jump")) {
+              if (Input.GetButton("Jump" + playerNum)) {
 	                moveDirection.y = jumpSpeed;
 	                jumpTimer = 0;
 	            }

@@ -38,7 +38,9 @@ public class MouseLook : MonoBehaviour
 	public float framesOfSmoothing = 5;
  
 	Quaternion originalRotation;
-	
+
+	public FirstPersonDrifter FirstPersonDrifter;
+
 	void Start ()
 	{			
 		if (GetComponent<Rigidbody>())
@@ -55,7 +57,7 @@ public class MouseLook : MonoBehaviour
 		{			
 			rotAverageX = 0f;
  
-			rotationX += Input.GetAxis("Mouse X") * sensitivityX * Time.timeScale;
+			rotationX += Input.GetAxis("Mouse X" + FirstPersonDrifter.playerNum) * sensitivityX * Time.timeScale;
  
 			rotArrayX.Add(rotationX);
  
@@ -82,7 +84,7 @@ public class MouseLook : MonoBehaviour
  			{
  				invertFlag = -1f;
  			}
-			rotationY += Input.GetAxis("Mouse Y") * sensitivityY * invertFlag * Time.timeScale;
+			rotationY += Input.GetAxis("Mouse Y" + FirstPersonDrifter.playerNum) * sensitivityY * invertFlag * Time.timeScale;
 			
 			rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
  	
