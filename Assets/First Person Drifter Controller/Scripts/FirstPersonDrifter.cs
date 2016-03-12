@@ -154,13 +154,15 @@ public class FirstPersonDrifter: MonoBehaviour
                 moveDirection = myTransform.TransformDirection(moveDirection);
             }
             if (Physics.Raycast(myTransform.position, transform.forward, out hit, 1) || Physics.Raycast(myTransform.position, -transform.right, out hit, 1) || Physics.Raycast(myTransform.position, transform.right, out hit, 1)) {
-            	moveDirection = new Vector3(inputX * inputModifyFactor, 0, inputY * inputModifyFactor);
-              moveDirection = myTransform.TransformDirection(Vector3.forward) * speed;
-              playerControl = true;
-              if (Input.GetButton("Jump" + playerNum)) {
-	                moveDirection.y = jumpSpeed;
-	                jumpTimer = 0;
-	            }
+            	if (hit.transform.gameObject.tag == "LevelGeo") {
+	            	moveDirection = new Vector3(inputX * inputModifyFactor, 0, inputY * inputModifyFactor);
+	              moveDirection = myTransform.TransformDirection(Vector3.forward) * speed;
+	              playerControl = true;
+	              if (Input.GetButton("Jump" + playerNum)) {
+		                moveDirection.y = jumpSpeed;
+		                jumpTimer = 0;
+		            }
+            	}
 
             }
         }

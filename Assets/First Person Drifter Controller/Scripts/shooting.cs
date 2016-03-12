@@ -1,19 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class shooting : MonoBehaviour {
 
 	private int i = 0;
 	private float timer = 0;
 	private float cooldown = 0;
+	private float visibility = 0;
+	private int points = 0;
 
 	public GameObject explosion;
 	public GameObject testPlayer;
+	public GameObject armTip;
+	public GameObject gunParticle;
+	
+	public Text scoreText;
 
 	public FirstPersonDrifter FirstPersonDrifter;
 
+	// private LineRenderer lineRenderer;
+
+	void Start() {
+		// lineRenderer = GetComponent<LineRenderer>();
+		// lineRenderer.enabled = false;
+		scoreText.text = points + "";
+
+	}
+
 	void Update () {
 		cooldown -= Time.deltaTime;
+		visibility -= Time.deltaTime;
+		// lineRenderer.material.SetColor("_TintColor", Color(.5,.5,.5,visibility));
+
+		// lineRenderer.SetPosition(0, armTip.transform.position);
 
 		if (cooldown <= 0) {
 			if (Input.GetButton("Fire" + FirstPersonDrifter.playerNum)) {
@@ -45,12 +65,17 @@ public class shooting : MonoBehaviour {
 		Ray hitRay = new Ray(transform.position, transform.forward);
 		if (Physics.Raycast(hitRay, out hit)) {
 			Debug.Log(dmg);
-			Debug.DrawRay(hitRay.origin, hitRay.direction, Color.green, 2);
+			// lineRenderer.enabled = true;
+			// lineRenderer.SetPosition(1, hit.point);
 			i++;
 			if (hit.transform.gameObject.tag == "Player") {
+				if (hit.transform.gameObject.GetComponent<testHealth>().health <= dmg) {
+					points++;
+					scoreText.text = points + "";
+				}
 				hit.transform.gameObject.GetComponent<testHealth>().health -= dmg;
 			}
-			// Instantiate(explosion, hit.transform.position, Quaternion.identity);
 		}
+		gunParticle.GetComponent<ParticleSystem>().Emit(1);
 	}
 }
