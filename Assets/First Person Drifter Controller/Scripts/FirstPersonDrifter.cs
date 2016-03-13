@@ -66,6 +66,8 @@ public class FirstPersonDrifter: MonoBehaviour
         rayDistance = controller.height * .5f + controller.radius;
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
+
+        Debug.Log(Input.GetJoystickNames() + " ");
     }
  
     void FixedUpdate() {
