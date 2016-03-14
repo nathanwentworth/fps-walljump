@@ -28,6 +28,8 @@ public class MouseLook : MonoBehaviour
  
 	float rotationX = 0F;
 	float rotationY = 0F;
+
+	private float deadzone = 0.25f;
  
 	private List<float> rotArrayX = new List<float>();
 	float rotAverageX = 0F;	
