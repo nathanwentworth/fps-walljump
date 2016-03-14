@@ -56,8 +56,8 @@ public class FirstPersonDrifter: MonoBehaviour
     private float dodgeTime = 0;
     private float dodgeCooldown = 0;
 
-    public int playerNum;
- 
+    public int playerNum = 1;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -66,8 +66,6 @@ public class FirstPersonDrifter: MonoBehaviour
         rayDistance = controller.height * .5f + controller.radius;
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
-
-        Debug.Log(Input.GetJoystickNames() + " ");
     }
  
     void FixedUpdate() {
@@ -186,5 +184,9 @@ public class FirstPersonDrifter: MonoBehaviour
     void FallingDamageAlert (float fallDistance)
     {
         //print ("Ouch! Fell " + fallDistance + " units!");   
+    }
+
+    void OnDestroy() {
+    	playerNum = 1;
     }
 }

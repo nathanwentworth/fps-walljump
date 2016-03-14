@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class shooting : MonoBehaviour {
 
@@ -18,6 +19,7 @@ public class shooting : MonoBehaviour {
 	public Text scoreText;
 
 	public FirstPersonDrifter FirstPersonDrifter;
+	public gameManager gameManager;
 
 	// private LineRenderer lineRenderer;
 
@@ -25,6 +27,7 @@ public class shooting : MonoBehaviour {
 		// lineRenderer = GetComponent<LineRenderer>();
 		// lineRenderer.enabled = false;
 		scoreText.text = points + "";
+		Debug.Log(gameManager.numberOfPlayers);
 
 	}
 
@@ -75,6 +78,10 @@ public class shooting : MonoBehaviour {
 				}
 				hit.transform.gameObject.GetComponent<testHealth>().health -= dmg;
 			}
+		}
+		if (points >= gameManager.numberOfPlayers) {
+
+			SceneManager.LoadScene(0);
 		}
 		gunParticle.GetComponent<ParticleSystem>().Emit(1);
 	}
