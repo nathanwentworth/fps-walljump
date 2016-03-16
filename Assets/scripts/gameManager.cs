@@ -29,6 +29,15 @@ public class gameManager : MonoBehaviour {
 		InitGame();
 	}
 
+	void Update() {
+		foreach (int i in playerScores) {
+			if (i >= numberOfPlayers) {
+				// to change later
+				SceneManager.LoadScene(0);
+			}
+		}
+	}
+
 	void InitGame() {
 		// change this later! should be an option set in settings
 		horizontalSplit = true;

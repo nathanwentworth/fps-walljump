@@ -79,9 +79,9 @@ public class shooting : MonoBehaviour {
 				hit.transform.gameObject.GetComponent<testHealth>().health -= dmg;
 			}
 		}
-		if (points >= gameManager.numberOfPlayers) {
-			SceneManager.LoadScene(0);
-		}
+		Debug.Log(FirstPersonDrifter.playerNum - 1);
+		Debug.Log(gameManager.playerScores[0]);
+		gameManager.playerScores[FirstPersonDrifter.playerNum - 1] = points;
 		gunParticle.GetComponent<ParticleSystem>().Emit(1);
 	}
 }

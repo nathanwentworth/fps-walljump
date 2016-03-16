@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 58dfbd8d4319a4b9492d006c127d88e0
-timeCreated: 1458081154
+guid: 10efc393ca75e41b1b013e84bba63e67
+timeCreated: 1458145299
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -23,17 +23,17 @@ ModelImporter:
     100030: LeftShoulder_0
     100032: LeftUpLeg_0
     100034: Neck_0
-    100036: //RootNode
-    100038: polySurface29
-    100040: RightArm_0
-    100042: RightFoot_0
-    100044: RightForeArm_0
-    100046: RightHand_0
-    100048: RightHandEnd_0
-    100050: RightLeg_0
-    100052: RightPelvis_0
-    100054: RightShoulder_0
-    100056: RightUpLeg_0
+    100036: polySurface29
+    100038: RightArm_0
+    100040: RightFoot_0
+    100042: RightForeArm_0
+    100044: RightHand_0
+    100046: RightHandEnd_0
+    100048: RightLeg_0
+    100050: RightPelvis_0
+    100052: RightShoulder_0
+    100054: RightUpLeg_0
+    100056: //RootNode
     100058: Skull_end_0
     100060: Spine1_0
     100062: Spine_0
@@ -55,22 +55,22 @@ ModelImporter:
     400030: LeftShoulder_0
     400032: LeftUpLeg_0
     400034: Neck_0
-    400036: //RootNode
-    400038: polySurface29
-    400040: RightArm_0
-    400042: RightFoot_0
-    400044: RightForeArm_0
-    400046: RightHand_0
-    400048: RightHandEnd_0
-    400050: RightLeg_0
-    400052: RightPelvis_0
-    400054: RightShoulder_0
-    400056: RightUpLeg_0
+    400036: polySurface29
+    400038: RightArm_0
+    400040: RightFoot_0
+    400042: RightForeArm_0
+    400044: RightHand_0
+    400046: RightHandEnd_0
+    400048: RightLeg_0
+    400050: RightPelvis_0
+    400052: RightShoulder_0
+    400054: RightUpLeg_0
+    400056: //RootNode
     400058: Skull_end_0
     400060: Spine1_0
     400062: Spine_0
     4300000: polySurface29
-    7400000: Idle
+    7400000: Run
     9500000: //RootNode
     13700000: polySurface29
   materials:
@@ -80,25 +80,25 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
-    animationRotationError: 0.5
-    animationPositionError: 0.5
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Run
       takeName: Take 001
-      firstFrame: 113
-      lastFrame: 145
+      firstFrame: 40
+      lastFrame: 61
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -106,7 +106,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -205,8 +205,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
