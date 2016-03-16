@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: 4200d131beb824defb988d29545ea15e
+timeCreated: 1458083175
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Ankle_Left_0
+    100002: Ankle_Right_0
+    100004: back
+    100006: Foot_Left_end_0
+    100008: Foot_Right_end_0
+    100010: //RootNode
+    100012: Head_0
+    100014: Hips_0
+    100016: left
+    100018: LeftArm_0
+    100020: LeftFoot_0
+    100022: LeftForeArm_0
+    100024: LeftHand_0
+    100026: LeftHandEnd_0
+    100028: LeftLeg_0
+    100030: LeftPelvis_0
+    100032: LeftShoulder_0
+    100034: LeftUpLeg_0
+    100036: Neck_0
+    100038: polySurface29
+    100040: RightArm_0
+    100042: RightFoot_0
+    100044: RightForeArm_0
+    100046: RightHand_0
+    100048: RightHandEnd_0
+    100050: RightLeg_0
+    100052: RightPelvis_0
+    100054: RightShoulder_0
+    100056: RightUpLeg_0
+    100058: Skull_end_0
+    100060: Spine1_0
+    100062: Spine_0
+    400000: Ankle_Left_0
+    400002: Ankle_Right_0
+    400004: back
+    400006: Foot_Left_end_0
+    400008: Foot_Right_end_0
+    400010: //RootNode
+    400012: Head_0
+    400014: Hips_0
+    400016: left
+    400018: LeftArm_0
+    400020: LeftFoot_0
+    400022: LeftForeArm_0
+    400024: LeftHand_0
+    400026: LeftHandEnd_0
+    400028: LeftLeg_0
+    400030: LeftPelvis_0
+    400032: LeftShoulder_0
+    400034: LeftUpLeg_0
+    400036: Neck_0
+    400038: polySurface29
+    400040: RightArm_0
+    400042: RightFoot_0
+    400044: RightForeArm_0
+    400046: RightHand_0
+    400048: RightHandEnd_0
+    400050: RightLeg_0
+    400052: RightPelvis_0
+    400054: RightShoulder_0
+    400056: RightUpLeg_0
+    400058: Skull_end_0
+    400060: Spine1_0
+    400062: Spine_0
+    4300000: polySurface29
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: polySurface29
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: Hips_0
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 424
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: back
+        weight: 1
+      - path: Hips_0
+        weight: 1
+      - path: Hips_0/LeftPelvis_0
+        weight: 1
+      - path: Hips_0/LeftPelvis_0/LeftUpLeg_0
+        weight: 1
+      - path: Hips_0/LeftPelvis_0/LeftUpLeg_0/LeftLeg_0
+        weight: 1
+      - path: Hips_0/LeftPelvis_0/LeftUpLeg_0/LeftLeg_0/Ankle_Left_0
+        weight: 1
+      - path: Hips_0/LeftPelvis_0/LeftUpLeg_0/LeftLeg_0/Ankle_Left_0/LeftFoot_0
+        weight: 1
+      - path: Hips_0/LeftPelvis_0/LeftUpLeg_0/LeftLeg_0/Ankle_Left_0/LeftFoot_0/Foot_Left_end_0
+        weight: 1
+      - path: Hips_0/RightPelvis_0
+        weight: 1
+      - path: Hips_0/RightPelvis_0/RightUpLeg_0
+        weight: 1
+      - path: Hips_0/RightPelvis_0/RightUpLeg_0/RightLeg_0
+        weight: 1
+      - path: Hips_0/RightPelvis_0/RightUpLeg_0/RightLeg_0/Ankle_Right_0
+        weight: 1
+      - path: Hips_0/RightPelvis_0/RightUpLeg_0/RightLeg_0/Ankle_Right_0/RightFoot_0
+        weight: 1
+      - path: Hips_0/RightPelvis_0/RightUpLeg_0/RightLeg_0/Ankle_Right_0/RightFoot_0/Foot_Right_end_0
+        weight: 1
+      - path: Hips_0/Spine_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/LeftShoulder_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/LeftShoulder_0/LeftArm_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/LeftShoulder_0/LeftArm_0/LeftForeArm_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/LeftShoulder_0/LeftArm_0/LeftForeArm_0/LeftHand_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/LeftShoulder_0/LeftArm_0/LeftForeArm_0/LeftHand_0/LeftHandEnd_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/Neck_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/Neck_0/Head_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/Neck_0/Head_0/Skull_end_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/RightShoulder_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/RightShoulder_0/RightArm_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/RightShoulder_0/RightArm_0/RightForeArm_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/RightShoulder_0/RightArm_0/RightForeArm_0/RightHand_0
+        weight: 1
+      - path: Hips_0/Spine_0/Spine1_0/RightShoulder_0/RightArm_0/RightForeArm_0/RightHand_0/RightHandEnd_0
+        weight: 1
+      - path: left
+        weight: 1
+      - path: polySurface29
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

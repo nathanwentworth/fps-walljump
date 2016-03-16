@@ -60,7 +60,7 @@ public class gameManager : MonoBehaviour {
 				// randomized from an array of empty gameobjects most likely
 				FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
 				FirstPersonDrifter.playerNum = i;
-				Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+				Instantiate(player, new Vector3(i, i, 0), Quaternion.identity);
 				
 				Debug.Log("current loop num is: " + i);
 				

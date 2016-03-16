@@ -80,7 +80,6 @@ public class shooting : MonoBehaviour {
 			}
 		}
 		if (points >= gameManager.numberOfPlayers) {
-
 			SceneManager.LoadScene(0);
 		}
 		gunParticle.GetComponent<ParticleSystem>().Emit(1);
