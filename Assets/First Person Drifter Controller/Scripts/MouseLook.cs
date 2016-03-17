@@ -10,8 +10,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MouseLook : MonoBehaviour
-{
+public class MouseLook : MonoBehaviour {
  
 	public enum RotationAxes { MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseX;
@@ -29,7 +28,10 @@ public class MouseLook : MonoBehaviour
 	float rotationX = 0F;
 	float rotationY = 0F;
 
-	private float deadzone = 0.25f;
+	float mouseX = 0F;
+	float mouseY = 0F;
+
+	private float deadzone = 0.15f;
  
 	private List<float> rotArrayX = new List<float>();
 	float rotAverageX = 0F;	
@@ -43,32 +45,54 @@ public class MouseLook : MonoBehaviour
 
 	public FirstPersonDrifter FirstPersonDrifter;
 
-	void Start ()
-	{			
-		if (GetComponent<Rigidbody>())
-		{
+	void Start () {			
+		if (GetComponent<Rigidbody>()) {
 			GetComponent<Rigidbody>().freezeRotation = true;
 		}
 		
 		originalRotation = transform.localRotation;
 	}
  
-	void Update ()
-	{
-		if (axes == RotationAxes.MouseX)
-		{			
+	void Update () {
+
+		mouseX = Input.GetAxis("Mouse X" + FirstPersonDrifter.playerNum) / 2;
+		mouseY = Input.GetAxis("Mouse Y" + FirstPersonDrifter.playerNum) / 2;
+
+		if (Mathf.Abs(mouseX) < deadzone) {
+			mouseX = 0;
+		}
+		else {
+			if (mouseX > 0) {
+				mouseX = ((mouseX - deadzone) / (1 - deadzone));
+			}
+			else {
+				mouseX = ((mouseX + deadzone) / (1 - deadzone));				
+			}
+		}
+
+		if (Mathf.Abs(mouseY) < deadzone) {
+			mouseY = 0;
+		}
+		else {
+			if (mouseY > 0) {
+				mouseY = ((mouseY - deadzone) / (1 - deadzone));
+			}
+			else {
+				mouseY = ((mouseY + deadzone) / (1 - deadzone));				
+			}
+		}
+
+		if (axes == RotationAxes.MouseX) {			
 			rotAverageX = 0f;
  
-			rotationX += Input.GetAxis("Mouse X" + FirstPersonDrifter.playerNum) * sensitivityX * Time.timeScale;
+			rotationX += mouseX * sensitivityX * Time.timeScale;
  
 			rotArrayX.Add(rotationX);
  
-			if (rotArrayX.Count >= framesOfSmoothing)
-			{
+			if (rotArrayX.Count >= framesOfSmoothing) {
 				rotArrayX.RemoveAt(0);
 			}
-			for(int i = 0; i < rotArrayX.Count; i++)
-			{
+			for (int i = 0; i < rotArrayX.Count; i++) {
 				rotAverageX += rotArrayX[i];
 			}
 			rotAverageX /= rotArrayX.Count;
@@ -77,27 +101,23 @@ public class MouseLook : MonoBehaviour
 			Quaternion xQuaternion = Quaternion.AngleAxis (rotAverageX, Vector3.up);
 			transform.localRotation = originalRotation * xQuaternion;			
 		}
-		else
-		{			
+		else {			
 			rotAverageY = 0f;
  
  			float invertFlag = 1f;
- 			if( invertY )
- 			{
+ 			if (invertY) {
  				invertFlag = -1f;
  			}
-			rotationY += Input.GetAxis("Mouse Y" + FirstPersonDrifter.playerNum) * sensitivityY * invertFlag * Time.timeScale;
+			rotationY += mouseY * sensitivityY * invertFlag * Time.timeScale;
 			
 			rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
  	
 			rotArrayY.Add(rotationY);
  
-			if (rotArrayY.Count >= framesOfSmoothing)
-			{
+			if (rotArrayY.Count >= framesOfSmoothing) {
 				rotArrayY.RemoveAt(0);
 			}
-			for(int j = 0; j < rotArrayY.Count; j++)
-			{
+			for (int j = 0; j < rotArrayY.Count; j++) {
 				rotAverageY += rotArrayY[j];
 			}
 			rotAverageY /= rotArrayY.Count;
@@ -107,14 +127,12 @@ public class MouseLook : MonoBehaviour
 		}
 	}
 	
-	public void SetSensitivity(float s)
-	{
+	public void SetSensitivity(float s) {
 		sensitivityX = s;
 		sensitivityY = s;
 	}
  
-	public static float ClampAngle (float angle, float min, float max)
-	{
+	public static float ClampAngle (float angle, float min, float max) {
 		angle = angle % 360;
 		if ((angle >= -360F) && (angle <= 360F)) {
 			if (angle < -360F) {
