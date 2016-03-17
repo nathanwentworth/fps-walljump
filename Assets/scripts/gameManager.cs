@@ -44,9 +44,6 @@ public class gameManager : MonoBehaviour {
 		// delete this later! in for testing
 		local = true;
 		numberOfPlayers = 0;
-
-		// remove this later, purely for debug testing
-		// PlayerCountSet(numberOfPlayers);
 	}
 
 	// call this to set the game to be in local mode
@@ -58,6 +55,9 @@ public class gameManager : MonoBehaviour {
 		playerScores = new int[players];
 		numberOfPlayers = players;
 		SceneManager.LoadScene(1);
+		for (int i = 0; i < playerScores.Length; i++) {
+			playerScores[i] = 0;
+		}
 	}
 
 	void CreatePlayers(int players) {
@@ -70,10 +70,6 @@ public class gameManager : MonoBehaviour {
 				FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
 				FirstPersonDrifter.playerNum = i;
 				Instantiate(player, new Vector3(i, i, 0), Quaternion.identity);
-				
-				Debug.Log("current loop num is: " + i);
-				
-				Debug.Log("applied playernum is: " + FirstPersonDrifter.playerNum);
 			}
 		}
 	}
