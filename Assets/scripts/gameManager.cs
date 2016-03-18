@@ -68,7 +68,7 @@ public class gameManager : MonoBehaviour {
 			for (int i = 1; i <= numberOfPlayers; i++) {
 				FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
 				FirstPersonDrifter.playerNum = i;
-				Instantiate(player, spawnPoints[i].transform.position, Quaternion.identity);
+				Instantiate(player, spawnPoints[i - 1].transform.position, Quaternion.identity);
 			}
 		}
 	}
