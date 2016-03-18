@@ -39,12 +39,10 @@ public class LockMouse : MonoBehaviour {
     	if (lockCursor) {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Debug.Log("cursor locked!");
     	}
     	else {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Debug.Log("cursor unlocked!"); 		
     	}
     }
 }

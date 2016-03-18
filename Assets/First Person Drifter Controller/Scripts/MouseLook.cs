@@ -55,6 +55,19 @@ public class MouseLook : MonoBehaviour {
  
 	void Update () {
 
+  	// RaycastHit hit;
+		// Ray hitRay = new Ray(transform.position, transform.forward);
+		// if (Physics.Raycast(hitRay, out hit)) {
+		// 	if (hit.transform.gameObject.tag == "Player") {
+		// 		sensitivityX = sensitivityX / 2;
+		// 		sensitivityY = sensitivityY / 2;
+		// 	}
+		// 	else {
+
+		// 	}
+		// }		
+
+
 		mouseX = Input.GetAxis("Mouse X" + FirstPersonDrifter.playerNum) / 2;
 		mouseY = Input.GetAxis("Mouse Y" + FirstPersonDrifter.playerNum) / 2;
 

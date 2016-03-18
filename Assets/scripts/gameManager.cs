@@ -91,7 +91,6 @@ public class gameManager : MonoBehaviour {
         spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
         ShuffleArray(spawnPoints);
 			}
-      Debug.Log("spawnPoints: " + spawnPoints);
 			CreatePlayers(numberOfPlayers);
 		}
 		else {
