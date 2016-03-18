@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour {
 	GameObject[] gameObjectsToDestroy;
 
 	private FirstPersonDrifter FirstPersonDrifter;
+	private GameObject[] spawnPoints;
 
 	void Awake() {
 		if (m == null) {
@@ -65,17 +66,29 @@ public class gameManager : MonoBehaviour {
 			FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
 			FirstPersonDrifter.playerNum = 0;
 			for (int i = 1; i <= numberOfPlayers; i++) {
-				// change the vector3 values later!
-				// randomized from an array of empty gameobjects most likely
 				FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
 				FirstPersonDrifter.playerNum = i;
-				Instantiate(player, new Vector3(i, i, 0), Quaternion.identity);
+				Instantiate(player, spawnPoints[i].transform.position, Quaternion.identity);
 			}
 		}
 	}
 
+	public static void ShuffleArray<T>(T[] arr) {
+		for (int i = arr.Length - 1; i > 0; i--) {
+    	int r = Random.Range(0, i);
+    	T tmp = arr[i];
+    	arr[i] = arr[r];
+    	arr[r] = tmp;
+    }
+  }
+
 	void OnLevelWasLoaded(int level) {
 		if (level > 0) {
+			if (spawnPoints == null) {
+        spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
+        ShuffleArray(spawnPoints);
+			}
+      Debug.Log("spawnPoints: " + spawnPoints);
 			CreatePlayers(numberOfPlayers);
 		}
 	}
