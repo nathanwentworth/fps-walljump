@@ -18,6 +18,8 @@ public class gameManager : MonoBehaviour {
 	private FirstPersonDrifter FirstPersonDrifter;
 	private GameObject[] spawnPoints;
 
+	MouseLock mouse = new MouseLock();
+
 	void Awake() {
 		if (m == null) {
 			m = this;
@@ -84,12 +86,16 @@ public class gameManager : MonoBehaviour {
 
 	void OnLevelWasLoaded(int level) {
 		if (level > 0) {
+			mouse.Lock();
 			if (spawnPoints == null) {
         spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
         ShuffleArray(spawnPoints);
 			}
       Debug.Log("spawnPoints: " + spawnPoints);
 			CreatePlayers(numberOfPlayers);
+		}
+		else {
+			mouse.Unlock();
 		}
 	}
 

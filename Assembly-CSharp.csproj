@@ -55,6 +55,7 @@
      <Compile Include="Assets\First Person Drifter Controller\Scripts\Optional\PauseMenu.cs" />
      <Compile Include="Assets\First Person Drifter Controller\Scripts\Utils\CameraFade.cs" />
      <Compile Include="Assets\First Person Drifter Controller\Scripts\shooting.cs" />
+     <Compile Include="Assets\scripts\MouseLock.cs" />
      <Compile Include="Assets\scripts\cameraSizeDuplicator.cs" />
      <Compile Include="Assets\scripts\gameManager.cs" />
      <Compile Include="Assets\scripts\testHealth.cs" />
