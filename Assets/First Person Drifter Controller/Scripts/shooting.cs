@@ -12,6 +12,7 @@ public class shooting : MonoBehaviour {
 	private int playerNumber;
 
 	public GameObject gunParticle;
+	public GameObject sparks;
 	
 	public Text scoreText;
 
@@ -67,6 +68,7 @@ public class shooting : MonoBehaviour {
 				}
 				hit.transform.gameObject.GetComponent<testHealth>().health -= dmg;
 			}
+			Instantiate(sparks, hit.point, Quaternion.identity);
 		}		
 		gunParticle.GetComponent<ParticleSystem>().Emit(1);
 	}
