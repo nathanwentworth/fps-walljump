@@ -57,10 +57,14 @@ public class gameManager : MonoBehaviour {
 	public void PlayerCountSet(int players) {
 		playerScores = new int[players];
 		numberOfPlayers = players;
-		SceneManager.LoadScene(1);
 		for (int i = 0; i < playerScores.Length; i++) {
 			playerScores[i] = 0;
 		}
+		
+	}
+
+	public void LevelSelectSet(int level) {
+		SceneManager.LoadScene(level);
 	}
 
 	void CreatePlayers(int players) {
