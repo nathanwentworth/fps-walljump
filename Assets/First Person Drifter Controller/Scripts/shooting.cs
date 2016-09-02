@@ -16,12 +16,12 @@ public class shooting : MonoBehaviour {
 	
 	public Text scoreText;
 
-	public FirstPersonDrifter FirstPersonDrifter;
+	public FirstPersonDrifter fpdScript;
 	public gameManager gameManager;
 
 	void Start() {
 		scoreText.text = points + "";
-		playerNumber = FirstPersonDrifter.playerNum;
+		playerNumber = fpdScript.playerNum;
 	}
 
 	void Update () {
@@ -61,8 +61,14 @@ public class shooting : MonoBehaviour {
 				if (hit.transform.gameObject.GetComponent<testHealth>().health <= dmg) {
 					points++;
 					scoreText.text = points + "";
-					gameManager.m.playerScores[playerNumber - 1] = points;
-					if (points >= (gameManager.m.numberOfPlayers - 1)) {
+					foreach (int i in gameManager.m.PlayerScores) {
+						if (i >= gameManager.m.NumberOfPlayers) {
+							// to change later
+							SceneManager.LoadScene(0);
+						}
+					}
+					gameManager.m.PlayerScores[playerNumber - 1] = points;
+					if (points >= (gameManager.m.NumberOfPlayers - 1)) {
 						SceneManager.LoadScene(0);
 					}
 				}

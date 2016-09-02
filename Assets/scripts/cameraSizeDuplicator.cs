@@ -7,7 +7,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 	public gameManager gameManager;
 
 	void Start() {
-		if (gameManager.m.numberOfPlayers == 1) {
+		if (gameManager.m.NumberOfPlayers == 1) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 1f, 1f);
 			}
@@ -21,7 +21,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
 			}
 		}
-		if (gameManager.m.numberOfPlayers == 2) {
+		if (gameManager.m.NumberOfPlayers == 2) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0.5f, 1f);
 			}
@@ -35,7 +35,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
 			}
 		}
-		if (gameManager.m.numberOfPlayers == 3) {
+		if (gameManager.m.NumberOfPlayers == 3) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
 			}
@@ -49,7 +49,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
 			}
 		}
-		if (gameManager.m.numberOfPlayers == 4) {
+		if (gameManager.m.NumberOfPlayers == 4) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
 			}

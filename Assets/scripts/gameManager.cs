@@ -6,17 +6,31 @@ public class gameManager : MonoBehaviour {
 
 	public static gameManager m = null;
 
-	public int[] playerScores;
-	public int numberOfPlayers;
+	private int[] playerScores;
+
+	public int[] PlayerScores {
+		get {return playerScores;}
+		set {playerScores = value;}
+	}
+
+	private int numberOfPlayers;
+
+	public int NumberOfPlayers {
+		get {return numberOfPlayers;}
+		set {numberOfPlayers = value;}
+	}
+
 
 	public bool local;
 	public bool horizontalSplit;
 
 	public GameObject player;
+	public GameObject menuCanvasContainers;
 	GameObject[] gameObjectsToDestroy;
 
 	private FirstPersonDrifter FirstPersonDrifter;
 	private GameObject[] spawnPoints;
+	private int currentScene;
 
 	MouseLock mouse = new MouseLock();
 
@@ -30,15 +44,8 @@ public class gameManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 
 		InitGame();
-	}
 
-	void Update() {
-		foreach (int i in playerScores) {
-			if (i >= numberOfPlayers) {
-				// to change later
-				SceneManager.LoadScene(0);
-			}
-		}
+		currentScene = SceneManager.GetActiveScene().buildIndex;
 	}
 
 	void InitGame() {
@@ -46,7 +53,7 @@ public class gameManager : MonoBehaviour {
 		horizontalSplit = true;
 		// delete this later! in for testing
 		local = true;
-		numberOfPlayers = 0;
+		// numberOfPlayers = 1;
 	}
 
 	// call this to set the game to be in local mode
@@ -54,13 +61,23 @@ public class gameManager : MonoBehaviour {
 		local = true;
 	}
 
+	// function is called in the main menu ui
+	// this:
+	// * sets the number of players, creates a score array in that size
+	// * runs the animation to move the menu down
 	public void PlayerCountSet(int players) {
 		playerScores = new int[players];
 		numberOfPlayers = players;
 		for (int i = 0; i < playerScores.Length; i++) {
 			playerScores[i] = 0;
 		}
-		
+		if (currentScene == 0) {
+			if (menuCanvasContainers != null) {
+				Animator anim;
+				anim = menuCanvasContainers.GetComponent<Animator>();
+				anim.SetBool("open", true);
+			}
+		} 
 	}
 
 	public void LevelSelectSet(int level) {
@@ -69,12 +86,13 @@ public class gameManager : MonoBehaviour {
 
 	void CreatePlayers(int players) {
 		if (local) {
-			FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
-			FirstPersonDrifter.playerNum = 0;
+			// FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
+			// FirstPersonDrifter.playerNum = 0;
 			for (int i = 1; i <= numberOfPlayers; i++) {
 				FirstPersonDrifter = player.GetComponent<FirstPersonDrifter>();
 				FirstPersonDrifter.playerNum = i;
 				Instantiate(player, spawnPoints[i - 1].transform.position, Quaternion.identity);
+				print("Created player " + i);
 			}
 		}
 	}
