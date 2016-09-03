@@ -12,12 +12,19 @@ public class gameManager : MonoBehaviour {
 		get {return playerScores;}
 		set {playerScores = value;}
 	}
+	
+	[SerializeField]
+	private int[] playerStatus;
+
+	public int[] PlayerStatus {
+		get {return playerStatus;}
+		set {playerStatus = value;}
+	}
 
 	private int numberOfPlayers;
 
 	public int NumberOfPlayers {
 		get {return numberOfPlayers;}
-		set {numberOfPlayers = value;}
 	}
 
 
@@ -67,9 +74,11 @@ public class gameManager : MonoBehaviour {
 	// * runs the animation to move the menu down
 	public void PlayerCountSet(int players) {
 		playerScores = new int[players];
+		playerStatus = new int[players];
 		numberOfPlayers = players;
 		for (int i = 0; i < playerScores.Length; i++) {
 			playerScores[i] = 0;
+			playerStatus[i] = 1;
 		}
 		if (currentScene == 0) {
 			if (menuCanvasContainers != null) {

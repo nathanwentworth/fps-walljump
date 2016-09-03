@@ -58,24 +58,15 @@ public class shooting : MonoBehaviour {
 		Ray hitRay = new Ray(transform.position, transform.forward);
 		if (Physics.Raycast(hitRay, out hit)) {
 			if (hit.transform.gameObject.tag == "Player") {
-				if (hit.transform.gameObject.GetComponent<testHealth>().health <= dmg) {
+				if (hit.transform.gameObject.GetComponent<FirstPersonDrifter>().health <= dmg) {
 					points++;
 					scoreText.text = points + "";
-					foreach (int i in gameManager.m.PlayerScores) {
-						if (i >= gameManager.m.NumberOfPlayers) {
-							// to change later
-							SceneManager.LoadScene(0);
-						}
-					}
-					gameManager.m.PlayerScores[playerNumber - 1] = points;
-					if (points >= (gameManager.m.NumberOfPlayers - 1)) {
-						SceneManager.LoadScene(0);
-					}
 				}
-				hit.transform.gameObject.GetComponent<testHealth>().health -= dmg;
+				hit.transform.gameObject.GetComponent<FirstPersonDrifter>().health -= dmg;
 			}
 			Instantiate(sparks, hit.point, Quaternion.identity);
 		}		
 		gunParticle.GetComponent<ParticleSystem>().Emit(1);
 	}
+
 }
