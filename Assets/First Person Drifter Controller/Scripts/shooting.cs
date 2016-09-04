@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class shooting : MonoBehaviour {
@@ -10,9 +11,17 @@ public class shooting : MonoBehaviour {
 	private float visibility = 0;
 	private int points = 0;
 	private int playerNumber;
+	private float shotSpeed = 1;
+	private float journeyLength;
 
+	[Header("Object Refs")]
 	public GameObject gunParticle;
 	public GameObject sparks;
+	public GameObject armTip;
+	public GameObject cam;
+
+  List<GameObject> gunParticleArr;
+
 	
 	public Text scoreText;
 
@@ -22,6 +31,13 @@ public class shooting : MonoBehaviour {
 	void Start() {
 		scoreText.text = points + "";
 		playerNumber = fpdScript.playerNum;
+
+		gunParticleArr = new List<GameObject>();
+    for (int i = 0; i < 10; i++) {
+    	GameObject obj = (GameObject)Instantiate(gunParticle);
+      obj.SetActive(false);
+      gunParticleArr.Add(obj);
+    }
 	}
 
 	void Update () {
@@ -31,25 +47,11 @@ public class shooting : MonoBehaviour {
 		if (cooldown <= 0) {
 			if (Input.GetButton("Fire" + playerNumber)) {
 				timer += Time.deltaTime;
-			}
-			if (Input.GetButtonUp("Fire" + playerNumber) || timer >= 4) {
-				RayTime(timer);
-				timer = 0;
-			}			
-		}
-	}
-
-	void RayTime(float timer) {
-		if (timer < 2) {
-			RayDmg(10);
-		} 
-		else if (timer >= 2 && timer < 4) {
-			RayDmg(20);
-			cooldown = 1;
-		}
-		else {
-			RayDmg(90);
-			cooldown = 2;
+				if (timer > 0.2f) {
+					RayDmg(10);
+					timer = 0;
+				}
+			}	
 		}
 	}
 
@@ -64,9 +66,14 @@ public class shooting : MonoBehaviour {
 				}
 				hit.transform.gameObject.GetComponent<FirstPersonDrifter>().health -= dmg;
 			}
-			Instantiate(sparks, hit.point, Quaternion.identity);
-		}		
-		gunParticle.GetComponent<ParticleSystem>().Emit(1);
+			for (int i = 0; i < gunParticleArr.Count; i++) {
+				if (!gunParticleArr[i].activeInHierarchy) {
+					gunParticleArr[i].transform.position = armTip.transform.position;
+					gunParticleArr[i].transform.forward = transform.parent.transform.forward;
+					gunParticleArr[i].SetActive(true);
+					break;
+				}
+			}
+		}
 	}
-
 }

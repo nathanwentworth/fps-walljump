@@ -13,16 +13,24 @@ public class LevelInitializer : MonoBehaviour {
 	public Text winnerText;
 	public GameObject winnerCanvas;
 
+	private int currentScene;
+
 	void Start () {
+		currentScene = SceneManager.GetActiveScene().buildIndex;
+		print ("Level loaded.");
 		Init();
 	}
 
 	void Init() {
- 		if (gm.CurrentScene > 0) {
+		print("Initializing game.");
+		print("Currently in scene #" + currentScene);
+ 		if (currentScene > 0) {
 			mouse.Lock();
+			print ("Mouse locked.");
 			if (spawnPoints == null) {
         spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
         ShuffleArray(spawnPoints);
+        print ("Found spawn points.");
 			}
 			CreatePlayers(gm.NumberOfPlayers);
 			gm.SpawnPoints = spawnPoints;
@@ -34,13 +42,13 @@ public class LevelInitializer : MonoBehaviour {
 	}
 
 	void CreatePlayers(int players) {
-		print(players);
 		if (spawnPoints.Length > 0) {
 			for (int i = 1; i <= players; i++) {
 				FirstPersonDrifter = gm.player.GetComponent<FirstPersonDrifter>();
 				FirstPersonDrifter.playerNum = i;
 				Instantiate(gm.player, spawnPoints[i - 1].transform.position, Quaternion.identity);
 			}
+			print("Created " + players + " players.");
 		} else {
 			print ("Can't find any spawn points");
 		}
@@ -65,6 +73,7 @@ public class LevelInitializer : MonoBehaviour {
 
 
   public IEnumerator WinnerDisp(int winner) {
+  	winner = winner + 1;
   	winnerText = winnerCanvas.gameObject.transform.GetChild(0).GetComponent<Text>();
     string winnerDisplay = "PLAYER " + winner + " WINS";
     winnerText.text = winnerDisplay;
