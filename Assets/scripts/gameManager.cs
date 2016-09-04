@@ -6,8 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName="Game Manager", menuName="", order = 1)]
 public class GameManager : ScriptableObject {
 
+	[SerializeField]
 	private int[] playerScores;
-
 	public int[] PlayerScores {
 		get {return playerScores;}
 		set {playerScores = value;}
@@ -15,7 +15,6 @@ public class GameManager : ScriptableObject {
 
 	[SerializeField]
 	private int[] playerStatus;
-
 	public int[] PlayerStatus {
 		get {return playerStatus;}
 		set {playerStatus = value;}
@@ -23,7 +22,6 @@ public class GameManager : ScriptableObject {
 
 	[SerializeField]
 	private int numberOfPlayers;
-
 	public int NumberOfPlayers {
 		get {return numberOfPlayers;}
 		set {numberOfPlayers = value;}
@@ -34,17 +32,13 @@ public class GameManager : ScriptableObject {
 	private Text winnerText;
 	GameObject[] gameObjectsToDestroy;
 
-	private FirstPersonDrifter FirstPersonDrifter;
 	private GameObject[] spawnPoints;
-
 	public GameObject[] SpawnPoints {
 		get {return spawnPoints;}
 		set {spawnPoints = value;}
 	}
 
-
 	private int currentScene;
-
 	public int CurrentScene {
 		get {return currentScene;}
 	}
