@@ -4,10 +4,12 @@ using System.Collections;
 public class cameraSizeDuplicator : MonoBehaviour {
 
 	public FirstPersonDrifter FirstPersonDrifter;
-	public gameManager gameManager;
+	public GameManager gm;
+	private int players;
 
 	void Start() {
-		if (gameManager.m.NumberOfPlayers == 1) {
+		players = gm.NumberOfPlayers;
+		if (players == 1) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 1f, 1f);
 			}
@@ -21,7 +23,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
 			}
 		}
-		if (gameManager.m.NumberOfPlayers == 2) {
+		if (players == 2) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0.5f, 1f);
 			}
@@ -35,7 +37,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
 			}
 		}
-		if (gameManager.m.NumberOfPlayers == 3) {
+		if (players == 3) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
 			}
@@ -49,7 +51,7 @@ public class cameraSizeDuplicator : MonoBehaviour {
 				GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
 			}
 		}
-		if (gameManager.m.NumberOfPlayers == 4) {
+		if (players == 4) {
 			if (FirstPersonDrifter.playerNum == 1) {
 				GetComponent<Camera>().rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
 			}

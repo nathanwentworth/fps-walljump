@@ -17,7 +17,7 @@ public class shooting : MonoBehaviour {
 	public Text scoreText;
 
 	public FirstPersonDrifter fpdScript;
-	public gameManager gameManager;
+	public GameManager gm;
 
 	void Start() {
 		scoreText.text = points + "";

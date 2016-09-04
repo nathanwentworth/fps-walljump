@@ -10,19 +10,24 @@ using UnityEngine.UI;
 
 [RequireComponent (typeof (CharacterController))]
 public class FirstPersonDrifter: MonoBehaviour {
-  public float walkSpeed = 6.0f;
-  public float runSpeed = 10.0f;
+  public GameManager gm;
 
-  // used for health stuff
   [Range(0, 100)]
   public int health = 100;
-  public Image healthCircle;
+
+  [Header("Object Refrences")]
   public GameObject model;
   public GameObject arm;
   public GameObject cam;
 
+  private LevelInitializer init;
 
+  [Header("UI Objects")]
+  public Image healthCircle;
 
+  [Header("Movement Variables")]
+  public float walkSpeed = 6.0f;
+  public float runSpeed = 10.0f;
   // If true, diagonal speed (when strafing + moving forward or back) can't exceed normal move speed; otherwise it's about 1.4 times faster
   private bool limitDiagonalSpeed = true;
 
@@ -71,6 +76,7 @@ public class FirstPersonDrifter: MonoBehaviour {
   public int playerNum = 1;
 
   void Start() {
+    init = GameObject.Find("Initializer").GetComponent<LevelInitializer>();
     controller = GetComponent<CharacterController>();
     myTransform = transform;
     speed = walkSpeed;
@@ -210,26 +216,10 @@ public class FirstPersonDrifter: MonoBehaviour {
       model.SetActive(false);
       arm.SetActive(false);
       cam.GetComponent<shooting>().enabled = false;
-      gameManager.m.PlayerStatus[playerNum - 1] = 0;
+      gm.PlayerStatus[playerNum - 1] = 0;
 
-      CheckWinStatus();
+      init.CheckWinStatus();
       health = 1;
-    }
-  }
-
-  void CheckWinStatus() {
-    int n = 0;
-    for (int status = 0; status < gameManager.m.PlayerStatus.Length; status++) {
-      if (gameManager.m.PlayerStatus[status] == 1) {
-        n++;
-      }
-    }
-    if (n == 1) {
-      for (int status = 0; status < gameManager.m.PlayerStatus.Length; status++) {
-        if (gameManager.m.PlayerStatus[status] == 1) {
-          print ("congrats, player " + status + " wins!");
-        }
-      }
     }
   }
 
